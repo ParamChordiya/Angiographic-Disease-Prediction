@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+<!--   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+  
+  
+</head>
+
+<body>
+
+
+
+  
+
+    <div>
+      
+      
+        <form action="{{ url_for('predict')}}" method="post">
+            <div id='hd'><h1>Heart Disease Prediction Application</h1><br></div>
+
+
+            <h3>Please Enter Age in years</h3>
+            <input id="first" name="age" type="number ">
+
+
+            <h3>Sex</h3>
+            <select name="sex" id="research" required="required">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <h3>Chest pain type: </h3>
+            <!-- <input id="third" name="cp" required="required"> -->
+            <select name="cp" id="research" required="required">
+                <option value="typical_angina">Typical angina</option>
+                <option value="atypical_angina">Atypical angina</option>
+                <option value="non_anginal_pain">Non-anginal pain</option>
+                <option value="asymptomatic">Asymptomatic</option>
+            </select>
+
+
+            <h3>Resting blood pressure in mm/Hg</h3>
+            
+            <input id="fourth" name="trestbps" required="required">
+
+            <h3>Serum Cholesterol in mg/dl</h3>
+            
+            <input id="fourth" name="chol" required="required">
+
+            <h3>Is fasting blood pressure > 120mg/dl ?</h3>
+            
+            <!-- <input id="fourth" name="fbs" required="required"> -->
+            <select name="fbs" id="research" required="required">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <h3>Resting electrocardiographic results</h3>
+            
+            <!-- <input id="fourth" name="restecg" required="required"> -->
+            <select name="restecg" id="research" required="required">
+                <option value="normal">Normal</option>
+                <option value="stt">Having ST-T</option>
+                <option value="hyper">Hypertrophy</option>
+            </select>
+
+            <h3>Maximum heart rate achieved </h3>
+            
+            <input id="fourth" name="thalach" required="required">
+
+            <h3>Exercise induced angina</h3>
+            
+            <!-- <input id="fourth" name="exang" required="required"> -->
+            <select name="exang" id="research" required="required">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <h3>ST depression induced by exercise relative to rest</h3>
+            
+            <input id="fourth" name="oldpeak" required="required">
+
+            <h3>The slope of the peak exercise ST segment</h3>
+            
+            <!-- <input id="fourth" name="slope" required="required"> -->
+            <select name="slope" id="research" required="required">
+                <option value="us">Up Sloping</option>
+                <option value="flat">Flat</option>
+                <option value="ds">Down Sloping</option>
+            </select>
+
+            <h3>Number of major vessels colored by flourosopy (0 - 4)</h3>
+            
+            <input id="fourth" name="ca" required="required">
+
+            <h3>Thalassemia (0 - 3)</h3>
+            
+            <input id="fourth" name="thal" required="required">
+
+            <!--             <h3>What Is the Fuel type?</h3>
+          <br>
+          <select name="Fuel_Type_Petrol" id="fuel" required="required">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Diesel">CNG</option>
+            </select> -->
+
+            <!--             <h3>Are you A Dealer or Individual</h3><br><select name="Seller_Type_Individual" id="resea" required="required">
+                <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+            </select>
+            <h3>Transmission type</h3><br><select name="Transmission_Mannual" id="research" required="required">
+                <option value="Mannual">Manual Car</option>
+                <option value="Automatic">Automatic Car</option>
+            </select> -->
+            <br><br><button id="sub" type="submit ">Prediction</button>
+            <br>
+
+
+
+
+        </form>
+
+      <h3>This Web application is an implementation of Machine Learning model. </h3>
+      <h3>To know more about the Author please <a href='about'>click here</a></h3>
+
+
+        <!-- <br><br>
+        <h3>{{ prediction_text }}<h3> -->
+    </div>
+
+
+
+
+    <style>
+
+      #hd{
+        padding-top:20px
+       padding-bottom:20px;
+      }
+        body {
+            background-color: #d9f1ff;
+            text-align: center;
+            padding: 0px;
+          font-family: 'Open Sans', sans-serif;
+        }
+
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+
+        #fuel:hover {
+            background-color: coral;
+        }
+
+        #research {
+            width: 299px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #research:hover {
+            background-color: coral;
+        }
+
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #resea:hover {
+            background-color: coral;
+        }
+
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #sub:hover {
+            background-color: darkcyan;
+        }
+
+        #first {
+            border-radius: 14px;
+            width: 299px;
+            height: 35px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #second {
+            border-radius: 14px;
+            width: 299px;
+            height: 35px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #third {
+            border-radius: 14px;
+            width: 299px;
+            height: 35px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #fourth {
+            border-radius: 14px;
+            width: 299px;
+            height: 35px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+  <!-- Bootstrap core JS-->
+<!--         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+
+</html>
